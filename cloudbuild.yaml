@@ -1,9 +1,4 @@
 steps:
-  # (opcional pero recomendado) Compilar con Maven
-  - name: maven:3.9.8-eclipse-temurin-17
-    entrypoint: mvn
-    args: ["clean", "package", "-DskipTests"]
-
   # 1. Construir la imagen con Docker
   - name: 'gcr.io/cloud-builders/docker'
     args: [
