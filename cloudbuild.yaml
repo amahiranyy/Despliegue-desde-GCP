@@ -8,7 +8,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'build', '-t',
-      'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-backend-repo/java-hello-world:$COMMIT_SHA',
+      'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-repo/java-hello-world:$COMMIT_SHA',
       '.'
     ]
 
@@ -16,7 +16,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-backend-repo/java-hello-world:$COMMIT_SHA'
+      'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-repo/java-hello-world:$COMMIT_SHA'
     ]
 
   # 3. Desplegar en Cloud Run
@@ -25,14 +25,14 @@ steps:
     args:
       [
         'run', 'deploy', 'java-hello-world',
-        '--image=us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-backend-repo/java-hello-world:$COMMIT_SHA',
+        '--image=us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-repo/java-hello-world:$COMMIT_SHA',
         '--platform=managed',
         '--region=us-central1',
         '--allow-unauthenticated'
       ]
 
 images:
-  - 'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-backend-repo/java-hello-world:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/project-98b200ea-2317-4845-843/java-repo/java-hello-world:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
